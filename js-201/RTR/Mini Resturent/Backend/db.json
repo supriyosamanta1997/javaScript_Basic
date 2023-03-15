@@ -1,0 +1,36 @@
+{
+  "Products": [
+    {
+      "image": "https://www.refrigeratedfrozenfood.com/ext/resources/NEW_RD_Website/DefaultImages/default-pasta.jpg?1430942591",
+      "title": "pasta",
+      "description": "italian",
+      "price": 800,
+      "rating": 8,
+      "id": 1
+    },
+    {
+      "image": "https://img.traveltriangle.com/blog/wp-content/uploads/2018/12/cover-for-street-food-in-sydney.jpg",
+      "title": "burger ",
+      "description": "american",
+      "price": 750,
+      "rating": 7.8,
+      "id": 2
+    },
+    {
+      "image": "https://static01.nyt.com/images/2022/06/12/dining/12Korokke/merlin_208197630_39a1b4ee-998e-4706-9f2f-8d5696f5e6ac-mobileMasterAt3x.jpg",
+      "title": "paties",
+      "description": "indian",
+      "price": 125,
+      "rating": 6,
+      "id": 3
+    },
+    {
+      "image": "https://img-global.cpcdn.com/recipes/9eb46faecd0cb6a6/680x482cq70/mutton-biriyani-in-kolkata-style-recipe-main-photo.jpg",
+      "title": "biriyani",
+      "description": "Indian ",
+      "price": 250,
+      "rating": 9.5,
+      "id": 4
+    }
+  ]
+}

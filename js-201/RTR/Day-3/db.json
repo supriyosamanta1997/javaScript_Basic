@@ -1,0 +1,20 @@
+{
+  "Product": [
+    {
+      "name": "lewa",
+      "price": 12,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "kitkat",
+      "price": 150
+    },
+    {
+      "id": "4",
+      "name": "messi",
+      "price": "1000"
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,79 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <div>
+      <input type="number" placeholder="id" id="id" />
+      <input type="text" placeholder="Product" id="name" />
+      <input type="text" placeholder="Price" id="price" />
+      <button onclick="AddData()">Submit</button>
+    </div>
+
+    <div>
+      <label>Delete</label>
+      <input type="number" placeholder="ID" id="Product_id" />
+      <button onclick="deleteProduct()">Delete</button>
+    </div>
+
+    <div>
+      <label>Put(update)</label>
+      <input type="number" placeholder="PUT" id="Product_put" />
+      <button onclick="uodateProduct()">Put</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  async function AddData() {
+    let newData = {
+      id: document.getElementById("id").value,
+      name: document.getElementById("name").value,
+      price: document.getElementById("price").value,
+    };
+
+    newData = JSON.stringify(newData);
+    let res = await fetch("http://localhost:3000/api/Product", {
+      method: "POST",
+      body: newData,
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    let data = await res.json();
+    console.log(data);
+  }
+
+  async function deleteProduct() {
+    let id = document.getElementById("Product_id").value;
+    let res = await fetch(`http://localhost:3000/api/Product/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let data = await res.json();
+    console.log(data);
+  }
+
+  async function uodateProduct() {
+    let put = document.getElementById("Product_put").value;
+    let resdata = await fetch(`http://localhost:3000/api/Product/${put}`, {
+      method: "PUT",
+
+      body: JSON.stringify({
+        name: "lewa",
+        price: 12,
+      }),
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let putdata = await resdata.json();
+    console.log(putdata);
+  }
+</script>

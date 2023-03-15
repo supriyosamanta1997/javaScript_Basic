@@ -1,0 +1,109 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login page</title>
+    <style>
+      #navbar {
+        height: 70px;
+        width: 100%;
+        background-color: rgb(210, 221, 240);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #box {
+        height: 170px;
+        width: 30%;
+        border: 1px solid gray;
+        margin: auto;
+        margin-top: 30px;
+      }
+      #username,
+      #password,
+      #submit {
+        display: block;
+        margin: auto;
+        margin-top: 10px;
+      }
+      #box1 {
+        height: 30px;
+        width: 10%;
+        background-color: rgb(201, 211, 230);
+        margin: auto;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h4><a href="">Menu</a></h4>
+      <h4><a href="login.html">Login</a></h4>
+      <h4><a href="signup.html">Signup</a></h4>
+    </div>
+    <div id="box">
+      <h1 style="text-align: center">Login</h1>
+      <input type="text" placeholder="Username" id="username" />
+      <input type="text" placeholder="Password" id="password" />
+      <button onclick="loginDetails()" id="submit">Submit</button>
+    </div>
+    <div id="box1">Go To Admin Page</div>
+  </body>
+</html>
+<script>
+  async function loginDetails() {
+    let loginData = {
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value,
+    };
+
+    let login1 = JSON.stringify(loginData);
+    try {
+      let res = await fetch(
+        "https://masai-api-mocker.herokuapp.com/auth/login",
+        {
+          method: "POST",
+          body: login1,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      let data = await res.json();
+      console.log(data);
+      alert("Login Successfull");
+      getMyProfile(data, loginData);
+    } catch (err) {
+      alert("Login unsuccessfull");
+    }
+  }
+
+  async function getMyProfile({ token }, { username }) {
+    let profile = await fetch(
+      `https://masai-api-mocker.herokuapp.com/user/${username}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    let data = await profile.json();
+    console.log(data);
+    document.getElementById("box1").addEventListener("click", function () {
+      admin(data);
+    });
+  }
+
+  function admin(data) {
+    if (data.description === "admin") {
+      window.location.href = "admin.html";
+    } else {
+      alert("you are not authorized");
+    }
+    // console.log("clicked?");
+  }
+</script>

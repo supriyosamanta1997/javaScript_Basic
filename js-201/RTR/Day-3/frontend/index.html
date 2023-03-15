@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <style>
+      #container {
+        height: 400px;
+        width: 60%;
+        display: flex;
+        margin: auto;
+      }
+      #register-form,
+      #login-form {
+        height: 300px;
+        width: 50%;
+        margin: auto;
+      }
+      #name,
+      #email,
+      #password,
+      #username,
+      #mobile,
+      #description {
+        display: block;
+      }
+      #login-username,
+      #login-password {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Insta Inventory System</h3>
+    <div id="container">
+      <div id="register-form">
+        <h3>Register</h3>
+        <form>
+          <input type="text" id="name" placeholder="Name" />
+          <input type="text" id="email" placeholder="Email" />
+          <input type="text" id="password" placeholder="Password" />
+          <input type="text" id="username" placeholder="Username" />
+          <input type="text" id="mobile" placeholder="Mobile" />
+          <input type="text" id="description" placeholder="Description" />
+        </form>
+
+        <button onclick="Register()">Signup</button>
+      </div>
+
+      <div id="login-form">
+        <h3>Login</h3>
+        <form>
+          <input type="text" id="login-username" placeholder="UserName" />
+          <input type="text" id="login-password" placeholder="Password" />
+        </form>
+
+        <button onclick="login()">Login</button>
+      </div>
+    </div>
+    <div id="admin" style="border: 1px solid gray; width: 12%; height: 20px">
+      ADMIN PAGE
+    </div>
+  </body>
+</html>
+<script>
+  async function Register() {
+    let signup_data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      username: document.getElementById("username").value,
+      mobile: document.getElementById("mobile").value,
+      description: document.getElementById("description").value,
+    };
+
+    body_2 = JSON.stringify(signup_data);
+    signup_api_link = "https://masai-api-mocker.herokuapp.com/auth/register";
+
+    let res = await fetch(signup_api_link, {
+      method: "POST",
+
+      body: body_2,
+
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    let data = await res.json();
+    console.log(data);
+  }
+
+  async function login() {
+    let login_data = {
+      username: document.getElementById("login-username").value,
+      password: document.getElementById("login-password").value,
+    };
+
+    body_1 = JSON.stringify(login_data);
+    console.log(login_data);
+    try {
+      let login_api_link = "https://masai-api-mocker.herokuapp.com/auth/login";
+      let res = await fetch(login_api_link, {
+        method: "POST",
+
+        body: body_1,
+
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      let data = await res.json();
+      console.log(data);
+      let login = true;
+      console.log(login);
+      localStorage.setItem("login", JSON.stringify(login));
+      alert("Login Successfull");
+      getmyProfile(data, login_data);
+    } catch (err) {
+      console.log("error");
+      // let login = false;
+      // console.log(login);
+      // localStorage.setItem("login", JSON.stringify(login));
+      alert("Login Unsuccessfull");
+    }
+  }
+
+  function getmyProfile({ token }, { username }) {
+    fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
+        document.getElementById("admin").addEventListener("click", function () {
+          admin(response);
+        });
+      })
+      .catch((err) => {
+        console.log(err.massage);
+      });
+  }
+
+  // function auth(response) {
+  //   console.log(response);
+  // }
+
+  function admin(response) {
+    // let login=JSON.parse(localStorage.getItem("login"))
+    if (response.description === "admin") {
+      window.location.href = "admin.html";
+    } else {
+      alert("You are not authorized");
+    }
+  }
+</script>
