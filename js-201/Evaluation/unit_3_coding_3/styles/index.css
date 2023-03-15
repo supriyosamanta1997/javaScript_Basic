@@ -1,0 +1,40 @@
+#navbar {
+  height: 50px;
+  width: 100%;
+  border: 1px solid gray;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#query {
+  padding: 14px 20%;
+  outline: none;
+}
+#sorting
+{
+    height: 50px;
+  width: 100%;
+  border: 1px solid gray;
+margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#hotels_list
+{
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 30px;
+}
+#hotel
+{
+    height: 650px;
+    width: 90%;
+    margin: auto;
+    border: 1px solid gray;
+}

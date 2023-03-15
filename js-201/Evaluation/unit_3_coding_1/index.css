@@ -1,0 +1,48 @@
+#product_brand
+{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 40px;
+    outline:none
+}
+#product_name
+{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 40px;
+    outline:none
+}
+#product_price
+{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 40px;
+    outline:none
+}
+#product_image
+{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 40px;
+    outline:none
+}
+#submit
+{
+    
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 40px;
+   
+}
+#show_products
+{
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 40px;
+}

@@ -1,0 +1,24 @@
+#cart
+{
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);;
+    grid-template-rows: repeat(1,1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+.item{
+    height: 400px;
+    width: 100%;
+    border: 1px solid gray;
+}
+.remove
+{
+    margin-left: 40%;
+}
+#cart_total
+{
+    height: 30px;
+    width: 100%;
+}

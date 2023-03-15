@@ -1,0 +1,15 @@
+#hotel_details
+{
+    height: 500px;
+    width: 60%;
+    margin: auto;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+}
+.hotel
+{
+    height: 350px;
+    width: 45%;
+    border: 1px solid gray;
+}

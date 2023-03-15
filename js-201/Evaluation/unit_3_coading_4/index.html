@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News App</title>
+    <style>
+      #navbar {
+        height: 70px;
+        width: 100%;
+        background-color: rgb(199, 210, 230);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      #search_input {
+        padding: 7px 20%;
+        border: 1px solid rgb(199, 210, 230);
+        border-radius: 10px;
+      }
+      #search_input:focus {
+        outline: none;
+      }
+      #container {
+        height: auto;
+        width: 100%;
+        border: 1px solid gray;
+        display: flex;
+        gap: 30px;
+      }
+      #sidebar {
+        height: 500px;
+        width: 22%;
+        background-color: darkkhaki;
+
+        gap: 20px;
+      }
+      #results {
+        height: auto;
+        width: 70%;
+        border: 1px solid gray;
+        margin-top: 10px;
+      }
+      .cont {
+        width: 75%;
+        height: 20px;
+        background-color: brown;
+        color: aliceblue;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .news {
+        height: auto;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 10px;
+        border: 1px solid gray;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Give Navbar with id "navbar"  -->
+    <!-- Navbar will have input with id search_input and a link to home page i.e. index.html -->
+    <!-- Sidebar will have id "sidebar"  -->
+    <!-- Give link to top headlines of countries in sidebar with id as their country codes 
+    india :- in
+    china :- ch
+    usa :- us
+    uk : uk
+    Newzeland :- nz -->
+
+    <!-- Append results inside div with id "results"  -->
+    <!-- News divs will have class "news"  -->
+
+    <div id="navbar"></div>
+    <div id="container">
+      <div id="sidebar">
+        <h3>countries</h3>
+        <div class="cont" id="newsI">India</div>
+        <div class="cont" id="newsC">China</div>
+        <div class="cont" id="newsN">Newzeland</div>
+        <div class="cont" id="newsU">USA</div>
+        <div class="cont" id="newsE">UK</div>
+      </div>
+      <div id="results"></div>
+    </div>
+  </body>
+</html>
+<script src="./scripts/index.js" type="module"></script>

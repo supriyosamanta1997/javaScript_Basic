@@ -1,0 +1,59 @@
+#navbar
+{
+    height: 60px;
+    width: 100%;
+    border: 1px solid gray;
+    display:flex;
+    align-items: center;
+    justify-content: end;
+    
+}
+#login
+{
+    font-size: 18px;
+}
+#signup
+{
+    font-size: 18px;
+    margin-left: 20px;
+
+}
+#cart
+{
+    font-size: 18px;
+    margin-left: 20px;
+}
+#cart
+{
+    text-decoration: none;
+}
+#wallet
+{
+    height: 100%;
+    width: 4%;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: blueviolet;
+    font-weight: 600;
+}
+#groceries
+{
+    height: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);;
+    grid-template-rows: repeat(1,1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+.item{
+    height: 400px;
+    width: 100%;
+    border: 1px solid gray;
+}
+.add_to_cart
+{
+    margin-left: 40%;
+}
