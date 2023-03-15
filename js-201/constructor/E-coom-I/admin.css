@@ -1,0 +1,18 @@
+.desine{
+    display: block;
+    padding: 8px 30px;
+    margin: auto;
+    margin-top: 15px;
+}
+.desine:focus{
+    outline: none;
+}
+#add{
+   
+    padding: 8px 15px; 
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    
+}

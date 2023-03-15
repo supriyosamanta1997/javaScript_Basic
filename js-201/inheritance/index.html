@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    // object.create
+
+    const car={
+        wheel:"four",
+        stearing:"one",
+        door:"four",
+    }
+    let maruti=Object.create(car)
+    maruti.color="blue";
+    maruti.capacity="eight";
+    let scorpio=Object.create(car);
+    scorpio.color="black";
+    scorpio.capacity="ten";
+    console.log(maruti);
+    console.log(scorpio);
+
+
+    // constructor function
+    
+        function fourWheelar(color,capacity,wheel,stearing,door)
+        {
+            this.color=color,
+            this.capacity=capacity,
+            this.wheel=wheel,
+            this.stearing=stearing,
+            this.door=door
+        }
+    
+        fourWheelar.prototype.colorandcapacity=function(color,capacity){
+            this.color,
+            this.capacity
+        }
+    
+  
+    
+    let maruti= new fourWheelar("four","one","four","blue","eight");
+    let scorpio= new fourWheelar("four","one","four","black","ten");
+    console.log(maruti);
+    console.log(scorpio)
+</script>

@@ -1,0 +1,47 @@
+#navbar{
+    width: 100%;
+    height: 60px;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+}
+
+ img{
+    height: 100%;
+    width: 100%;
+    /* padding-top: 5px; */
+}
+/* i{
+    margin-left: 10px;
+} */
+.box{
+height: 50%;
+width: 3%;
+margin-left: 15px;
+}
+#box2{
+    height: 100%;
+    width: 60%;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+}
+#query{
+    padding: 12px 290px;
+    /* font-size: 1px; */
+}
+button{
+    padding: 12px 8px;
+    background-color: #fff;
+    border: 1px solid red;
+}
+
+#results{
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(5,1fr);
+    gap: 20px;
+}

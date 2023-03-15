@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #video{
+            height: 450px;
+            width: 60%;
+            margin-top: 20px;
+        
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="navbar">
+        <script src="https://kit.fontawesome.com/7f9033071d.js" crossorigin="anonymous"></script>
+        <i class="fas fa-2x fa-solid fa-align-justify"></i>
+        <div class="box">
+          <img src="https://www.transparentpng.com/thumb/youtube-logo/youtube-logo-high-quality-png-9.png" alt="">
+        </div>
+      
+        <div id="box2">
+            <span>
+              <input type="text" placeholder="Search" id="query">
+              <i class=" fas fa-1.5x fa-solid fa-magnifying-glass"></i>
+            </span>
+           
+        </div>
+        
+
+        </div>
+        <div id="video"></div>
+</body>
+</html>
+<script>
+
+let videoArr=JSON.parse(localStorage.getItem("video"));
+let box=document.getElementById("video")
+
+let div=document.createElement("div")
+
+
+let iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube.com/embed/${videoArr.videoId}`;
+    iframe.style.width="100%";
+    iframe.style.height="450px"
+
+let h3 = document.createElement("h3");
+    h3.innerText = videoArr.title;
+
+     console.log(h3)
+     console.log(iframe)
+     div.append(iframe,h3)
+     box.append(div)
+
+</script>

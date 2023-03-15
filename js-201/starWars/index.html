@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stars Wars</title>
+    <style>
+        *{
+            margin: 0px;
+            border: 0px;
+        }
+        .container{
+            height: 700px;
+            width:100%;
+            border: solid 1px red;
+            background-image:url( "https://cdn.wallpapersafari.com/7/9/L6XpGJ.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%
+        }
+        img{
+            width: 100%;
+        }
+        #query{
+            padding: 10px 20%;
+            margin-left: 25%;
+            margin-top: 8%;
+            border-radius: 10px;
+        }
+        #query:focus{
+            outline: none;
+        }
+        #results{
+            height: auto;
+            width: 50%;
+            background-color: bisque;
+            color:rgb(175, 135, 212);
+            margin: auto;
+            transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+            margin-top: 10px;
+            font-size: 20px
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+     
+       <input type="text" id="query" oninput="debouncing(main,500)">
+       <div id="results"></div>
+    </div>
+</body>
+</html>
+<script>
+let id;
+    async function getdata()
+    {
+        let query=document.getElementById("query").value;
+
+        let url=` https://swapi.dev/api/people/?search=${query}`;
+
+        let response= await fetch(url);
+        let data= await response.json();
+        console.log(data.results)
+        // append(data.results)
+        return data.results
+    }
+
+    function append(data)
+    {
+        let container=document.getElementById("results");
+        container.innerHTML=null
+        data.forEach(element => {
+
+            let  name=document.createElement("p")
+            name.innerText=element.name;
+            
+
+            container.append(name)
+            
+        });
+    }
+
+    async function main()
+    {
+        let data = await getdata();
+        append(data);
+    }
+
+    function debouncing(func,delay)
+        {
+            if(id)
+            {
+                clearTimeout(id)
+            }
+            id=setTimeout(function()
+            {
+                func();
+
+            },delay)
+        }
+  
+</script>

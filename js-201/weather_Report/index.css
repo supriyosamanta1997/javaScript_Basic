@@ -1,0 +1,45 @@
+
+*{
+    border: 0px;
+    margin: 0px;
+}
+
+#container{
+    border: 1px solid red;
+    height: 200px;
+    width: 20%;
+}
+.mapouter{
+    width: 50%;
+    border: 1px solid red;
+    margin-left: 650px;
+    margin-top: -100px;
+}
+#nav{
+    height: 400px;
+    width: 100%;
+    border: 1px solid skyblue;
+    background-image: url("https://www.wallpaperuse.com/wallp/25-251990_m.jpg");;
+    background-size: 100%;
+}
+#city{
+    /* margin-top: 50px; */
+    /* margin-left: 40px; */
+    padding: 12px 250px;
+    border: 1px solid skyblue;
+}
+#city:focus{
+    outline: none;
+}
+#card1{
+    height: 45px;
+    width: 65%;
+    margin: auto;
+    margin-top: 50px;
+}
+button{
+    padding: 11px 20px;
+    background-color: skyblue;
+    color: black;
+    font-size: 16px;
+}

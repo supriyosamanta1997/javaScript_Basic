@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 1px;
+            
+        }
+        #query{
+            margin-left: 40px;
+            padding: 10px 250px;
+            border-radius: 5px;
+            border: 2px solid rgb(156, 0, 0);
+        }
+        #query:focus{
+            outline-style: none;
+        }
+        #results{
+            margin-top: 30px;
+            width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(5,1fr);
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+     <input type="text" id="query">
+     <button onclick="Search()">Search</button>
+     <div id="results"></div>
+</body>
+</html>
+
+<script src="main.js"></script>

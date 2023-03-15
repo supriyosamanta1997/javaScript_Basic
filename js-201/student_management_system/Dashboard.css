@@ -1,0 +1,85 @@
+*{
+    margin: 0px;
+    border: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: cornsilk;
+}
+.navbar{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+a{
+    text-decoration: none;
+    color: teal;
+}
+.card3{
+    width: 10%;
+    border: 1px solid red;
+    color: blueviolet;
+  }
+.form_data{
+    display: block;
+    border: 1px solid gray;
+    height: 40px;
+    width: 90%;
+    border: 0px;
+    margin: auto;
+    margin-top: 20px;
+   font-size: 18px;
+}
+.form_data:focus{
+    outline: none;
+}
+.form_data:hover{
+    border: 0px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+#title{
+    width: 80%;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 30px;
+    margin-left: 20px;
+}
+#name{
+    margin-top: 40px;
+}
+#form{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 500px;
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+    margin-top: 40px;
+    background-color: cyan;
+}
+
+#submit{
+    height: 30px;
+    width:60%;
+    font-size: 17px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+#submit:hover{
+    color: aqua;
+    background-color:rgb(58, 58, 131);
+}
+#card2
+{
+    height: 40px;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: teal;
+    color: aquamarine;
+}

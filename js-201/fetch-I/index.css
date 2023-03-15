@@ -1,0 +1,55 @@
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+.navbar{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: darkmagenta;
+    color: azure;
+}
+.card1{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    color: azure;
+}
+.card2{
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+    color: azure;
+}
+#query{
+
+   border: 1px solid red;
+    margin-top: 30px;
+    padding: 10px 18%;
+}
+#submit{
+    padding: 10px 20px ;
+    background-color: black;
+    color: aqua;
+    font-size: 18px;
+}
+#container{
+    height:auto;
+    width: 100%;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(1,1fr);
+    gap: 20px;
+    
+
+}
+#movie{
+   
+    height: 100%;
+    width: 80%;
+    
+}

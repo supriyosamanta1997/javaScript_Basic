@@ -1,0 +1,16 @@
+#container{
+    height: auto;
+    width: 100%;
+    border: 1px solid green;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card{
+    height: 140px;
+    width: 25%;
+    border: 1px solid red;
+}

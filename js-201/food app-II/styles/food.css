@@ -1,0 +1,25 @@
+#container{
+    height: 300px;
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
+  
+}
+#div1
+{
+    height: auto;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+#div2
+{
+    height: auto;
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}

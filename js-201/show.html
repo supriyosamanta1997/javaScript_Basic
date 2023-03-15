@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="slideshow">slideshow</h1>
+    <button onclick="startShow()">Start</button>
+    <button onclick="pause()">pause</button>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let i=0;
+    let id;
+   
+    function startShow()
+    {
+        let images=JSON.parse(localStorage.getItem("images"));
+        console.log(images)
+        let container=document.getElementById("container")
+       let img1=document.createElement("img")
+       img1.src=images[0];
+       container.append(img1)
+        
+
+        id= setInterval(function(){
+            if(i=== images.length)
+            {
+                i=0;
+            }
+            container.innerHTML=null
+            let image=images[i];
+            console.log(i)
+               // append part
+            let img=document.createElement("img");
+
+            img.src=image;
+
+            container.append(img );
+
+            i++;
+
+        },3000)
+    }
+
+    function pause(){
+        clearInterval(id)
+    }
+
+</script>

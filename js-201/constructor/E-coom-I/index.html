@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <h3>
+        <a href="products.html">Products Page</a>
+    </h3>
+    <input type="text" placeholder="Name" id="name" class="desine">
+    <input type="text" placeholder="Category" id="category" class="desine">
+    <input type="text" placeholder="image url" id="image" class="desine">
+    <input type="text" placeholder="Price" id="price" class="desine">
+    <input type="number" placeholder="Product_Id" id="Id" class="desine">
+    <input type="text" placeholder="Gender" id="gender" class="desine">
+    <input type="text" placeholder="Sold or Not" id="sold" class="desine">
+    <button id="add" onclick="Submit()">SUBMIT</button>
+</body>
+</html>
+<script>
+function Submit()
+{
+    name=document.getElementById("name").value;
+    category=document.getElementById("category").value;
+    image=document.getElementById("image").value;
+    price=document.getElementById("price").value;
+    Id=document.getElementById("price").value;
+    gender=document.getElementById("gender").value;
+    sold=document.getElementById("sold").value;
+
+    // console.log(name,category,image,price,gender,sold)
+
+    function Product_Name(n,c,img,p,i,g,s)
+    {
+        this.name=n;
+        this.category=c;
+        this.image=img;
+        this.price=p;
+        this.Product_Id=i
+        this.gender=g;
+        this.soldOrNot=s
+
+    }
+    let product_Data= JSON.parse(localStorage.getItem("Products")) || [];
+    let  p1= new Product_Name(name,category,image,price,Id,gender,sold);
+    product_Data.push(p1)
+    localStorage.setItem("Products",JSON.stringify(product_Data))
+}
+Submit()
+
+</script>

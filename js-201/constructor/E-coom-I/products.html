@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            height: 500px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat((2,1fr));
+            gap: 30px;
+        }
+        .card{
+            height: 300px;
+            width: 100%;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+
+    let Data=JSON.parse(localStorage.getItem("Products"));
+//   Data.innerHTML=null;
+
+    append(Data)
+    function append(data)
+    {
+        let container=document.getElementById("container")
+        data.forEach((element,index) => {
+            console.log(element)
+
+            let img=document.createElement("img")
+            img.src=element.image;
+            img.style.height="70%";
+            img.style.width="100%"
+
+
+           let div=document.createElement("div")
+            div.setAttribute("class","card")
+
+            let botton=document.createElement("button")
+            botton.innerText="REMOVE";
+            div.addEventListener("click",function(){
+                removeData(element,index)
+            })
+
+            let botton2=document.createElement("button")
+            botton2.innerText=element.soldOrNot
+
+            div.append(img,botton,botton2)
+            container.append(div)
+            
+        });
+    }
+
+    function removeData(elem,index)
+    {
+        console.log("clicked?")
+        Data.splice(index, 1);
+      localStorage.setItem("Products", JSON.stringify(Data));
+      window.location.reload();
+    }
+ 
+</script>

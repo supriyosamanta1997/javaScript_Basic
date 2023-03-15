@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <h3>Add Products</h3>
+        <input type="text" id="id">
+
+        <input type="text" id="name">
+
+        <input type="text" id="price">
+
+        <button onclick="addProducts()">Add Products</button>
+    </div>
+
+    <div>
+        <input type="text" id="delete_id">
+        <button onclick="deleteItem()">Delete Item</button>
+    </div>
+
+    <div>
+        <input type="text" id="put_id">
+        <input type="text" id="put_name">
+        <input type="text" id="put_price">
+        <button onclick="putItem()">Put Item</button>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    async function addProducts()
+    {
+        let data={
+            id:document.getElementById("id").value,
+            name:document.getElementById("name").value,
+            price:document.getElementById("price").value
+        };
+
+
+        let response= await fetch('http://localhost:5000/api/products',{
+
+            method:"POST",
+
+            body:JSON.stringify(data),
+
+            headers: {'Content-Type': 'application/json'}
+
+        })
+
+        let Data= await response.json()
+    }
+
+
+
+    async function deleteItem()
+    {
+        let id=document.getElementById("delete_id").value
+        let response= await fetch(`http://localhost:5000/api/products/${id}`,{
+
+            method:"DELETE",
+            headers: {'Content-Type': 'application/json'}
+        })
+
+        let Data= await response.json()
+        console.log(Data)
+    }
+
+
+    async function putItem()
+    {
+        let id=document.getElementById("put_id").value
+        let name=document.getElementById("put_name").value
+        let price=document.getElementById("put_price").value
+
+        let response= await fetch(`http://localhost:5000/api/products/${id}`,{
+
+            method:"PUT",
+            body:JSON.stringify({
+                name:name,
+                price:price
+            }),
+            headers: {'Content-Type': 'application/json'}
+        })
+
+        let Data= await response.json()
+        console.log(Data)
+    }
+</script>

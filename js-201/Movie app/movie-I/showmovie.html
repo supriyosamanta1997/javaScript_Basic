@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    
+    <script src="https://kit.fontawesome.com/7f9033071d.js" crossorigin="anonymous"></script>
+    <header class="header">
+        <i  onclick="Searchmovie()" class="fa-lg fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search" id="query">
+    </header>
+    
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+
+    let data=JSON.parse(localStorage.getItem(" particularData"))
+    console.log(data);
+
+    append(data)
+
+
+    function append(data)
+        {
+            let container=document.getElementById("container")
+            container.innerHTML=null;
+             
+                let img=document.createElement("img")
+                img.setAttribute("id","image")
+                img.src=`https://image.tmdb.org/t/p/w500${data.poster_path}`;
+
+
+                let p=document.createElement("p")
+                p.style.marginLeft="10px"
+                 p.innerText=`Name: ${data.title}`;
+
+                 let p2=document.createElement("p")
+                
+                 p2.innerText=data.vote_average;
+
+
+
+                 let div2=document.createElement("div")
+                 div2.setAttribute("id","div2")
+                
+
+
+
+                 let div3=document.createElement("div")
+                 div3.setAttribute("id","div3")
+                
+
+                 let div1=document.createElement("div")
+               
+
+                 div1.setAttribute("id","div1")
+                 div3.append(p2)
+                 div2.append(p,div3)
+                 div1.append(img,div2)
+                 container.append(div1)   
+        }
+
+
+</script>

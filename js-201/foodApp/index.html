@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodApp</title>
+    <style>
+        *{
+            border: 0px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            height: 350px;
+            width: 100%;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png");
+        } 
+        .location{
+            padding: 20px 200px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        .location:focus{
+            outline: none;
+        }
+        .card{
+            height: auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(3,1fr);
+            gap: 20px;
+            margin-top: 20px;
+           
+            
+        }
+        #box{
+            height:270px;
+            width: 80%;
+            border: 1px solid orange;
+            margin: auto;
+        }
+        #innerbox{
+            height: 80%;
+            width: 90%;
+            margin: auto;
+            margin-top: 10px;
+            position: relative;
+        }
+        #order{
+            position: absolute;
+            padding: 10px 120px;
+            margin-left: 12px;
+            margin-top: -15px;
+            font-size: 16px;
+        }
+        
+        #order:hover{
+            background-color: orange;
+            color: white;
+        }
+        .show{
+            height: auto;
+            width: 30%;
+            margin: auto;
+        }
+        #odered_item{
+            margin-top: 10px;
+            height: fit-content;
+            width: 100%;
+        }
+        .order_no{
+            height: auto;
+            width: 30%;
+            margin: auto;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        <input type="text" placeholder="Track Your Location" class="location">
+    </div>
+<h2 style="margin-top: 10px;">Menu Is Here</h2>
+    <div class="card">
+        
+    </div>
+    <h4 style="width:15%;margin: auto;margin-top:20px; font-size: 18px;">See Your Order Here</h4>
+    <div class="show">
+        
+        <img  id="odered_item" src="https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif" alt="">
+    </div>
+   <div class="order_no"></div>
+</body>
+</html>
+
+<script>
+ let food=document.querySelector(".card");
+ let foodArr=[
+        {
+          img: "https://b.zmtcdn.com/data/dish_photos/840/2dab00414bc1bfab8032d3629e877840.jpg",
+            no:"1"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/169/93c4edd64a5344072a512b2c179d9169.jpg",
+            no:"2"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/f14/d19bde19fc66db81d897fcd025d51f14.jpg",
+            no:"3"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/014/63cd07d9af085df47844e28dfe813014.jpg",
+            no:"4"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/03a/894404502f9f28d7287e2a7d7414e03a.jpg",
+            no:"5"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/7c2/ca19d0dc74292033d02b91a95e21d7c2.jpg",
+            no:"6"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/38f/6cd11709b63ce3d9224ce1848cfd138f.jpg",
+            no:"7"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/6a0/8f3a649b1bbe55b55ee4883dc11136a0.jpg",
+            no:"8"
+        },
+        {
+            img: "https://b.zmtcdn.com/data/dish_photos/a83/27ff6c63c2309c4b79d40a7568cffa83.jpg",
+            no:"9"
+        },
+        ];
+// console.log(foodArr);
+displayData(foodArr)
+
+function displayData(data)
+{
+    data.forEach(function(elem) {
+        // console.log(elem)
+    let box=document.createElement("div");
+    box.setAttribute("id","box");
+
+    let innerbox= document.createElement("div");
+    innerbox.setAttribute("id","innerbox");
+
+    let image=document.createElement("img")
+    image.src=elem.img;
+    image.style.height="100%"
+    image.style.width="100%"
+    innerbox.append(image);
+
+    // let check=document.createElement("input");
+    // check.type="checkbox";
+    // check.setAttribute("id","checked")
+    // check.style.marginLeft="10px";
+    // check.style.marginTop="10px";
+    // check.style.width="30px";
+
+    // check.addEventListener("click",function(){
+    //     selectedOrNot(elem)
+    // });
+
+    let order=document.createElement("button")
+    order.innerText="Place Order";
+    order.setAttribute("id","order")
+    order.addEventListener("click",function(){
+        giveOrder(elem)
+    });
+    
+
+    box.append(innerbox,order);
+    food.append(box);
+    });
+
+    
+
+}
+
+// function selectedOrNot(elem)
+// {
+//   document.querySelector("#order");
+  
+
+// }
+
+function giveOrder(elem)
+  {
+      console.log("checked?");
+      console.log(elem.no)
+
+     let order_no=document.querySelector(".order_no")
+     let image=document.getElementById("odered_item")
+      function checkcontent()
+      {
+          return true
+      };
+      let Food_promise= new Promise (function ( resolve , reject){
+
+        let content = checkcontent()
+
+        setTimeout(function(){
+            if(content===true)
+        {
+        resolve("content is loaded");
+        }
+        else{
+        reject("content failed to load");
+        }
+        },3000)
+
+        });
+        Food_promise.then(function ( value){
+            console.log(value)
+            console.log(elem)
+            image.src=elem.img;
+            order_no.innerText="Your Order No.is:"+(elem.no) 
+        })
+    }   
+</script>

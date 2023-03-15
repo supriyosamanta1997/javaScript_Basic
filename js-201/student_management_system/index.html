@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h3 class="card"><a href="index.html"> HOME</a></h3>
+        <div id="card2"></div>
+        <h3 class="card"><a href="students.html">STUDENTS DATA</a></h3>
+        <!-- <p class="card3">fw-18:1|fw-18:1</p> -->
+    </nav>
+   
+      <form id="form" onsubmit="storeData()">
+        <div id="title">
+            <h3>Enter Student Details Here:-</h3>
+        </div>
+        <input type="text" placeholder="Name" id="name" class="form_data">
+        <input type="text" placeholder="Course" id="course" class="form_data">
+        <input type="number" placeholder="Unit" id="unit" class="form_data">
+        <input type="url" placeholder="Image url" id="img_url" class="form_data">
+        <input type="text" placeholder="Batch" id="batch" class="form_data">
+        <input type="submit" placeholder="Submit" id="submit" >
+        
+    </form>    
+
+</body>
+</html>
+<script src="Dashboard.js"></script>

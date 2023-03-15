@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: white;
+}
+body{
+    background-color: #1a1a1a;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar{
+    width: 0.8vw;
+}
+::-webkit-scrollbar-track{
+    background-color: #1a1a1a ;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient( transparent, rgb(0, 255, 136));
+    height: 100px;
+    border-radius: 5px;
+}
+.title{
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 2em;
+    margin-top: 0.5em;
+}
+#searchbar{
+    margin-left: 80%;
+    margin-bottom: 5em;
+    background-color: #1a1a1a;
+    outline: none;
+    border: white solid 1px;
+    padding: 1em;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+::placeholder{
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.dataaa{
+    display: flex;
+    flex-direction: column;
+}
+.pieceofdata{
+    width: 100vw;
+    border: 2px rgb(0, 255, 136) solid;
+    display: flex;
+    padding: 1em 0em;
+    justify-content: space-around;
+}
+.subtitles{
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+}
+li{
+    list-style: none;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.8em;
+    border-bottom: 2px solid rgb(0, 255, 136) ;
+}
+.symbol{
+    color: lime;
+    font-size: 2.5rem;
+}
+.name{
+    justify-self: normal;
+}
+/* .price{
+
+} */
+    </style>
+</head>
+<body>
+  <h1 class="title">Crytpo Currencies</h1></div>
+  <div action=""><input placeholder= "Search for Crypto"type="text" name="searchbar" id="searchbar"></div>
+  <ul class="subtitles">
+      <li class="symbol-title">Symbol</li>
+      <li class="name-title">Name</li>
+      <li class="price-title">Price</li>
+  </ul>
+  <div class="dataaa"></div>
+</body>
+
+<!-- <script src="main.js"></script> -->
+</html>
+<script>
+let elements = document.querySelector(".elements");
+let dataaa = document.querySelector(".dataaa");
+let searchbar = document.getElementById("searchbar");
+
+
+
+function getdata() {
+    fetch(
+    'https://data.messari.io/api/v1/assets?fields=id,slug,symbol,metrics/market_data/price_usd'
+  )
+    .then((response) => {
+      const data = response.json();
+      return data;
+    })
+    .then((data) => {
+      const html = data.data
+        .map((pieceofdata) => {
+          //VARIABLES OF DATA
+          const name = pieceofdata.slug;
+          const symbol = pieceofdata.symbol;
+          const price = +pieceofdata.metrics.market_data.price_usd.toFixed(2);
+
+
+          //HERE IS THE SEARCHBAR FUNCTION I AM HAVING ISSUES WITH ↓
+
+
+          searchbar.addEventListener('keyup', function(e){
+            let currentword = e.target.value
+            if(name.includes(currentword)){
+            dataaa.innerHTML = `<div class="pieceofdata"><h1 class= "symbol"> ${symbol}</h1><h1 class= "name"> ${name}</h1><h1 class="price"> $${price}</h1>
+            </div>`;
+            }
+            else{
+              dataaa.innerHTML = `<div class="pieceofdata"><h1 class= "symbol"> </h1><h1 class= "name"></h1> <h1 class="name">No Results Found</h1> <h1 class= "price"></h1>
+              </div>`;
+            }
+          })
+          
+          return `<div class="pieceofdata"><h1 class= "symbol"> ${symbol}</h1><h1 class= "name"> ${name}</h1><h1 class= "price"> $${price}</h1>
+            </div>`;
+        })
+      dataaa.innerHTML = html;
+
+    });
+}
+
+
+getdata();
+</script>

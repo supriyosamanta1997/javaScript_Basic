@@ -1,0 +1,185 @@
+<!-- 042bfda17dafe51cd58344ccf056233a -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie App-I</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/7f9033071d.js" crossorigin="anonymous"></script>
+    <header class="header">
+        <i  onclick="Searchmovie()" class="fa-lg fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search" id="query">
+    </header>
+    
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    function Searchmovie()
+    {
+        
+        let query=document.getElementById("query").value
+        if(query=="")
+        {
+            getdata()
+            
+        }
+        else{
+            let container=document.getElementById("container")
+            container.innerHTML=null;
+
+            async function getdata()
+        {
+            // let url=`https://api.themoviedb.org/4/discover/movie?sort_by=popularity.desc&api_key=042bfda17dafe51cd58344ccf056233a`
+            let url=`https://api.themoviedb.org/4/search/movie?&api_key=042bfda17dafe51cd58344ccf056233a&query=${query}`;
+            let res= await fetch(url);
+            let data= await res.json();
+            console.log(data.results)
+            append(data.results)
+        }
+        getdata()
+
+        function append(data)
+        {
+            let container=document.getElementById("container")
+            container.innerHTML=null;
+            data.forEach(function(element) {
+                let img=document.createElement("img")
+                img.setAttribute("id","image")
+                img.src=`https://image.tmdb.org/t/p/w500${element.poster_path}`;
+
+
+                let p=document.createElement("p")
+                p.style.marginLeft="10px"
+                 p.innerText=`Name: ${element.title}`;
+
+                 let p2=document.createElement("p")
+                
+                 p2.innerText=element.vote_average;
+
+
+                 if(element.vote_average<=6)
+                 {
+                    p2.setAttribute("id","red")
+                 }
+
+                 if(element.vote_average>6&& element.vote_average<8)
+                 {
+                    p2.setAttribute("id","orange")
+                 }
+
+                 if(element.vote_average>=8)
+                 {
+                    p2.setAttribute("id","green")
+                 }
+
+
+                 let div2=document.createElement("div")
+                 div2.setAttribute("id","div2")
+                
+
+
+
+                 let div3=document.createElement("div")
+                 div3.setAttribute("id","div3")
+                
+
+                 let div1=document.createElement("div")
+                 div1.addEventListener("click",function(){
+                    particulardata(element)
+                 })
+
+                 div1.setAttribute("id","div1")
+                 div3.append(p2)
+                 div2.append(p,div3)
+                 div1.append(img,div2)
+                 container.append(div1)
+
+            });
+            
+        }
+        }
+
+    }
+
+    async function getdata()
+        {
+            let url=`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=042bfda17dafe51cd58344ccf056233a`
+            let res= await fetch(url);
+            let data= await res.json();
+            // console.log(data.results)
+            append(data.results)
+        }
+        getdata()
+
+        function append(data)
+        {
+            let container=document.getElementById("container")
+            container.innerHTML=null;
+            data.forEach(function(element) {
+                let img=document.createElement("img")
+                img.setAttribute("id","image")
+                img.src=`https://image.tmdb.org/t/p/w500${element.poster_path}`;
+
+
+                let p=document.createElement("p")
+                p.style.marginLeft="10px"
+                 p.innerText=`Name: ${element.title}`;
+
+                 let p2=document.createElement("p")
+                
+                 p2.innerText=element.vote_average;
+
+
+                 if(element.vote_average<=6)
+                 {
+                    p2.setAttribute("id","red")
+                 }
+
+                 if(element.vote_average>6&& element.vote_average<8)
+                 {
+                    p2.setAttribute("id","orange")
+                 }
+
+                 if(element.vote_average>=8)
+                 {
+                    p2.setAttribute("id","green")
+                 }
+
+
+                 let div2=document.createElement("div")
+                 div2.setAttribute("id","div2")
+                
+
+
+
+                 let div3=document.createElement("div")
+                 div3.setAttribute("id","div3")
+                
+
+                 let div1=document.createElement("div")
+                 div1.addEventListener("click",function(){
+                    particulardata(element)
+                 })
+
+                 div1.setAttribute("id","div1")
+                 div3.append(p2)
+                 div2.append(p,div3)
+                 div1.append(img,div2)
+                 container.append(div1)
+
+            });
+            
+        }
+
+        function particulardata(element)
+        {
+            
+            localStorage.setItem(" particularData",JSON.stringify(element))
+            window.location.href="showmovie.html"
+        }
+</script>
